@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Практична робота №2 — Графіка в HTML</title>
+    <style>
+        :root {
+            --primary: #3b82f6;
+            --primary-light: #eff6ff;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --border-color: #e2e8f0;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+            color: var(--text-main);
+            margin: 0;
+            padding: 40px 15px;
+            line-height: 1.6;
+        }
+
+        .main-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.08), 0 0 1px 1px rgba(0, 0, 0, 0.04);
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+        }
+
+        .header-block {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            color: #ffffff;
+            padding: 36px 30px;
+            text-align: center;
+        }
+
+        .header-block h1 {
+            margin: 0 0 10px 0;
+            font-size: 26px;
+            font-weight: 700;
+        }
+
+        .header-block p {
+            margin: 0;
+            color: #94a3b8;
+            font-size: 15px;
+        }
+
+        .content-body {
+            padding: 35px;
+        }
+
+        .item-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+            padding: 22px;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+            transition: all 0.25s ease;
+        }
+
+        .item-card:hover {
+            border-color: #cbd5e1;
+            box-shadow: 0 10px 20px -3px rgba(0, 0, 0, 0.06);
+            transform: translateY(-2px);
+        }
+
+        .card-header-flex {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #f1f5f9;
+            padding-bottom: 10px;
+        }
+
+        .item-card h2 {
+            font-size: 17px;
+            margin: 0;
+            color: #0f172a;
+            font-weight: 600;
+        }
+
+        .badge {
+            background: var(--primary-light);
+            color: var(--primary);
+            font-family: 'Consolas', monospace;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 6px;
+            border: 1px solid #dbeafe;
+        }
+
+        .item-card p {
+            margin: 0;
+            font-size: 15px;
+            color: #334155;
+        }
+
+        img {
+            border: 2px solid #94a3b8 !important;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+            transition: transform 0.25s ease, border-color 0.25s ease;
+            object-fit: cover;
+        }
+
+        img:hover {
+            transform: scale(1.03);
+            border-color: var(--primary) !important;
+        }
+
+        .nav-section {
+            text-align: center;
+            margin: 30px 0 10px 0;
+            padding-top: 25px;
+            border-top: 1px solid #f1f5f9;
+        }
+
+        .btn-action {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            padding: 13px 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
+            transition: all 0.2s ease;
+        }
+
+        .btn-action:hover {
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.45);
+            transform: translateY(-2px);
+        }
+
+        .app-footer {
+            background: #0b1329;
+            color: #94a3b8;
+            padding: 28px 24px;
+            text-align: center;
+            font-size: 13.5px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .app-footer .copyright-title {
+            color: #f8fafc;
+            font-size: 14.5px;
+            font-weight: 600;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .app-footer .badge-shield {
+            background: rgba(59, 130, 246, 0.18);
+            color: #60a5fa;
+            border: 1px solid rgba(96, 165, 250, 0.3);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .app-footer .copyright-desc {
+            color: #64748b;
+            margin: 0;
+            font-size: 12.5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="main-container">
+    <header class="header-block">
+        <h1>Робота з графічними об'єктами в HTML</h1>
+        <p>Практична робота №2 • Дослідження властивостей вирівнювання та обтікання</p>
+    </header>
+
+    <div class="content-body">
+        <!-- 1: TOP -->
+        <div class="item-card">
+            <div class="card-header-flex">
+                <h2>1. Текст у верхній частині</h2>
+                <span class="badge">ALIGN="TOP"</span>
+            </div>
+            <p>
+                <img src="https://picsum.photos/id/1018/200/200" 
+                     referrerpolicy="no-referrer" 
+                     alt="Гірський пейзаж" width="150" height="150" align="top" border="2">
+                Цей текст вирівняно точно по верхньому краю зображення за допомогою атрибута <code>align="top"</code>.
+            </p>
+        </div>
+
+        <!-- 2: BOTTOM -->
+        <div class="item-card">
+            <div class="card-header-flex">
+                <h2>2. Текст у нижній частині</h2>
+                <span class="badge">ALIGN="BOTTOM"</span>
+            </div>
+            <p>
+                <img src="https://picsum.photos/id/1015/200/200" 
+                     referrerpolicy="no-referrer" 
+                     alt="Річка та гори" width="150" height="150" align="bottom" border="2">
+                Цей текст вирівняно по нижній межі (базовій лінії) зображення завдяки атрибуту <code>align="bottom"</code>.
+            </p>
+        </div>
+
+        <!-- 3: LEFT -->
+        <div class="item-card">
+            <div class="card-header-flex">
+                <h2>3. Зображення ліворуч, текст праворуч</h2>
+                <span class="badge">ALIGN="LEFT"</span>
+            </div>
+            <p>
+                <img src="https://picsum.photos/id/1016/200/200" 
+                     referrerpolicy="no-referrer" 
+                     alt="Каскади гір" width="150" height="150" align="left" hspace="18" vspace="6" border="2">
+                Зображення притиснуте до лівого краю. Текст обтікає малюнок із правого боку. Атрибути <code>hspace="18"</code> та <code>vspace="6"</code> створюють зручні відступи, щоб літери не торкалися рамки.
+            </p>
+            <br clear="all">
+        </div>
+
+        <!-- 4: MIDDLE -->
+        <div class="item-card">
+            <div class="card-header-flex">
+                <h2>4. Зображення в центрі</h2>
+                <span class="badge">ALIGN="MIDDLE"</span>
+            </div>
+            <p>
+                <img src="https://picsum.photos/id/1039/200/200" 
+                     referrerpolicy="no-referrer" 
+                     alt="Водоспад у лісі" width="150" height="150" align="middle" border="2">
+                Один рядок тексту розміщений по центру відносно висоти зображення за допомогою <code>align="middle"</code>.
+            </p>
+        </div>
+
+        <!-- 5: RIGHT -->
+        <div class="item-card">
+            <div class="card-header-flex">
+                <h2>5. Зображення праворуч, текст ліворуч</h2>
+                <span class="badge">ALIGN="RIGHT"</span>
+            </div>
+            <p>
+                <img src="https://picsum.photos/id/1029/200/200" 
+                     referrerpolicy="no-referrer" 
+                     alt="Схід сонця над лісом" width="150" height="150" align="right" hspace="18" border="2">
+                Зображення розміщене біля правої рамки. Текст обтікає графічний об'єкт з лівого боку з горизонтальним відступом <code>hspace="18"</code>.
+            </p>
+            <br clear="all">
+        </div>
+
+        <div class="nav-section">
+            <a href="graphs.html" class="btn-action">
+                Перейти до сторінки з графіками кривих →
+            </a>
+        </div>
+    </div>
+
+    <!-- Футер -->
+    <footer class="app-footer">
+        <div class="copyright-title">
+            <span>&copy; Автор: Максим Ковалишин, 2026</span>
+            <span class="badge-shield">Всі права захищені</span>
+        </div>
+        <p class="copyright-desc">Вміст захищений під авторським правом.</p>
+    </footer>
+</div>
+
+</body>
+</html>
